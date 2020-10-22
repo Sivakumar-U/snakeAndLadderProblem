@@ -6,6 +6,11 @@ public class SnakeAndLadder {
 	public static final int NOPLAY = 1;
 	public static final int LADDER = 2;
 	public static final int SNAKE = 3;
+	public static int COUNTER = 0;
+	public static int WINROLLS = 0;
+	public static int LOSEROLLS = 0;
+	public static int NOPLAYROLLS = 0;
+
 	final static int WINPOINT = 100;
 
 	public static int position = 0;
@@ -29,17 +34,20 @@ public class SnakeAndLadder {
 			System.out.println("Random value : " + random);
 			switch (random) {
 			case NOPLAY:
+				NOPLAYROLLS++;
 				System.out.println("NOPLAY");
 				System.out.println("Position of player : " + position);
 				System.out.println("----------------------");
 				break;
 			case LADDER:
+				WINROLLS++;
 				System.out.println("############## Climb up the ladder ############");
 				position += rolldice;
 				System.out.println("Position of the  Player = " + position);
 				System.out.println("----------------------");
 				break;
 			case SNAKE:
+				LOSEROLLS++;
 				System.out.println("~~~~~~~~~~~~~~~~ Swallowed by snake ~~~~~~~~~~~~");
 				position -= rolldice;
 				System.out.println("Position of the  Player = " + position);
@@ -75,5 +83,10 @@ public class SnakeAndLadder {
 		System.out.println("Player Position At Start: " + position);
 		startGame();
 		System.out.println("-------------------End----------------------");
+
+		System.out.println("NOPLAY Rolls of Die: " + NOPLAYROLLS);
+		System.out.println("Wining Rolls of Die: " + WINROLLS);
+		System.out.println("Losing Rolls of Die: " + LOSEROLLS);
+		System.out.println("Total Number of Die rolls : " + COUNTER);
 	}
 }
